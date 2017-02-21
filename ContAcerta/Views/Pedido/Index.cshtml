@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ContAcerta.Models.Pedido>
+
+@{
+    ViewBag.Title = "Pedidos";
+}
+<br />
+<h2>Relatórios</h2>
+<br />
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new {id= "#__AjaxAntiForgeryForm" }))
+{
+    @Html.AntiForgeryToken()
+    foreach (var item in Model.Take(1))
+    {
+    <div class="form-horizontal">
+
+            <div class="form-group col-xs-4 col-sm-4">
+                <label>Data De:</label>
+                @Html.HiddenFor(m => item.DataDe)
+                @Html.EditorFor(m => item.DataDe, new { htmlAttributes = new { @class = "form-control", id = "dateDe" } })
+            </div>
+            <div class="form-group col-xs-4 col-sm-4">
+                <label>Data Até:</label>
+                @Html.HiddenFor(m => item.DataAte)
+                @Html.EditorFor(m => item.DataAte, new { htmlAttributes = new { @class = "form-control", id = "dateAte" } })
+            </div>
+
+            <div class="form-group col-xs-3 col-sm-8">
+                    <button type="button" id="btnPesquisar" class="btn btn-success btn-outline btn-lg">Pesquisar</button>
+            </div>
+        @if (Model != null && Model.Count() > 0)
+        {
+            <div class="form-group col-xs-3 col-sm-6">
+                <button type="button" id="btnGerar" onclick="GerarRelatorioPedidos(this);" class="btn btn-info btn-outline btn-lg">Gerar Relatório</button>
+            </div>
+        }
+        
+    </div>
+        }
+    }
+    @if (Model != null && Model.Count() > 0)
+    {
+        @Html.Partial("_TablePedidos", Model)
+    }
+
+            @section Scripts {
+                @Scripts.Render("~/bundles/pedidos-datatable")
+                @Scripts.Render("~/bundles/pedidos-datepicker")
+            }
+

@@ -1,0 +1,8 @@
+C:\ProjetosVS\ContAcerta\TestContAcerta\bin\Debug\TestContAcerta.exe.config
+C:\ProjetosVS\ContAcerta\TestContAcerta\bin\Debug\TestContAcerta.exe
+C:\ProjetosVS\ContAcerta\TestContAcerta\bin\Debug\TestContAcerta.pdb
+C:\ProjetosVS\ContAcerta\TestContAcerta\bin\Debug\WebDriver.dll
+C:\ProjetosVS\ContAcerta\TestContAcerta\bin\Debug\WebDriver.xml
+C:\ProjetosVS\ContAcerta\TestContAcerta\obj\Debug\TestContAcerta.csprojResolveAssemblyReference.cache
+C:\ProjetosVS\ContAcerta\TestContAcerta\obj\Debug\TestContAcerta.exe
+C:\ProjetosVS\ContAcerta\TestContAcerta\obj\Debug\TestContAcerta.pdb

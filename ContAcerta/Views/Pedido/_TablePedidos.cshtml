@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ContAcerta.Models.Pedido>
+
+<br />
+<br />
+
+<div id="divPedidos">
+    <table id="pedidosTable" class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Data)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DcPedido)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Valor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ValorCredito)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ValorDebito)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TpPagamento)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Data)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DcPedido)
+                    </td>
+                    <td>
+                        R$@Html.DisplayFor(modelItem => item.Valor)
+                    </td>
+                    <td>
+                        R$@Html.DisplayFor(modelItem => item.ValorCredito)
+                    </td>
+                    <td>
+                        R$@Html.DisplayFor(modelItem => item.ValorDebito)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TpPagamento)
+                    </td>
+                </tr>
+
+            }
+
+        </tbody>
+
+    </table>
+</div>
+
+

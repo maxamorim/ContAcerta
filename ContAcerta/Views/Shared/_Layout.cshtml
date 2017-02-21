@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - ContAcerta</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    @Styles.Render("~/Content/css")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href='@Url.Action("Create", "Pedido")' class="navbar-brand">
+                    <img src='@Url.Content("~/Content/img/tb-tesoreria.png")' style="width: 40px; margin: -10px;"/>
+                </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="@Url.Action("Index", "Produto")" class="">
+                            <span class="glyphicon glyphicon-barcode" aria-hidden="true"></span>
+                            Produtos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("List", "Pedido")" class="">
+                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            Administrar Pedidos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index", "Pedido")" class="">
+                            <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+                            Relatórios
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Register", "Account")" id="registerLink">
+                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            Registrar Usuário
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Contact", "Home")" class="">
+                            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                            Contato
+                        </a>
+                    </li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - ContAcerta</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery-ui")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/datatable")
+    @Scripts.Render("~/bundles/datepicker")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryUnobtrusive")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

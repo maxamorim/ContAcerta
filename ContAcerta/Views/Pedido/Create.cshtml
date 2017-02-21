@@ -1,0 +1,125 @@
+﻿@model ContAcerta.Models.Pedido
+<script src="~/Scripts/Pedidos.js"></script>
+
+@{
+    ViewBag.Title = "Create";
+}
+<br />
+<h2>Pedido</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <fieldset id="fildsetPedidosVinculados">
+            @if (TempData["notice"] != null) {
+                <span id="notice" style="color:green; font-size:20px;">@TempData["notice"]</span>
+            }
+            
+                <div style="width: 550px;" class="controls">
+                    <br />
+                    <label style="float: left; font-size: 20px; margin-right: 20px; margin-left: 105px; margin-top: 5px;">
+                        Produto: 
+                    </label>
+                    @Html.EditorFor(m => m.DcPedido, new { htmlAttributes = new { @class = "form-control input-lg" } })
+                    <button style="float: right; margin-top: -43px;  width: 40px; height: 40px;" id="btnAddPedido" class="glyphicon glyphicon-plus" type="button" title="Adicionar Pedido" onclick="Pedido.prototype.VincularPedido('Produto');"></button>
+                </div>
+            <br />
+            <div style="width: 500px;" class="controls">
+                <label style="float: left; font-size: 20px; margin-right: 20px; margin-top: 5px;">
+                    Tipo de Pagamento:
+                </label>
+                @Html.EnumDropDownListFor(model => model.TiposPagamento, htmlAttributes: new { @class = "form-control input-lg" })
+            </div>
+
+                <br />
+                <br />
+
+                <table id="tabelaPedido" class="table table-hover table-formatada-pedido">
+                    <thead>
+                        <tr data-preventdefault="true" class="tr-header">
+                            <th>Produto</th>
+                            <th>Tipo</th>
+                            <th>Valor</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @if (Model.Produtos != null && Model.Produtos.Count > 0)
+                    {
+                        for (int i = 0; i < Model.Produtos.Count; i++)
+                        {
+                            <tr data-produto="@Model.Produtos[i].ProdutoId">
+                                @Html.HiddenFor(m => m.Produtos[i].ProdutoId)
+                                @Html.HiddenFor(m => m.Produtos[i].DcProduto)
+                                @Html.HiddenFor(m => m.Produtos[i].TpProduto)
+                                @Html.HiddenFor(m => m.Produtos[i].ValProduto)
+
+                                <td>@Model.Produtos[i].DcProduto</td>
+                                <td>@Model.Produtos[i].TpProduto</td>
+                                <td>@Model.Produtos[i].ValProduto</td>
+                                <td style='cursor:pointer'><span onclick="Pedido.prototype.DesvincularPedido(this)" class="glyphicon glyphicon-trash" title="Excluir"></span></td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="3" class="td-empty">
+                                <span class="span-aviso">Insira seu pedido</span>
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+                </fieldset>
+        <div class="form-group valor-total-div">
+            <label style="font-size: 16px;" class="col-md-2 control-label valor-total-label">Valor Total à ser cobrado:</label>
+            <div class="col-md-10">
+                @Html.HiddenFor(m => m.ValorArmazenado)
+                @Html.TextBox("valTotCob", null, new { @class = "form-control valor-total input-lg valTotCob", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group valor-total-div">
+            <label style="font-size: 16px;" class="col-md-2 control-label valor-total-label">Valor Total Liquido:</label>
+            <div class="col-md-10">
+                @Html.HiddenFor(m => m.Valor)
+                @Html.TextBox("valTot", null, new { @class = "form-control valor-total input-lg valTot", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group valor-total-div" style="color: red;">
+            <label style="font-size: 16px;" class="col-md-2 control-label valor-total-label">Taxa de Crédito:</label>
+            <div class="col-md-10">
+                @Html.HiddenFor(m => m.ValorCredito)
+                @Html.TextBox("valCredito", null, new { @class = "form-control valor-total input-lg valCredito", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group valor-total-div" style="color: red;">
+            <label style="font-size: 16px;" class="col-md-2 control-label valor-total-label">Taxa de Débito:</label>
+            <div class="col-md-10">
+                @Html.HiddenFor(m => m.ValorDebito)
+                @Html.TextBox("valDebito", null, new { @class = "form-control valor-total input-lg valDebito", @disabled = "disabled" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Concluir Pedido" class="btn btn-success btn-outline btn-lg" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="button" id="btnFechar" onclick="FecharCaixa(this);" class="btn btn-danger btn-outline btn-lg">FECHAR CAIXA</button>
+            </div>
+        </div>
+        
+
+    </div>
+            }
+
+@section Scripts {
+    @Scripts.Render("~/bundles/pedidos")
+}

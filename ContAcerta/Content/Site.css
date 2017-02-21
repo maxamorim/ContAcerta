@@ -1,0 +1,91 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background: #69c964;
+    background: linear-gradient(90deg, #69c964 10%, #ffffff 0%, #ffffff 90%, #69c964 10%);
+    font-family: Segoe UI,Frutiger,Frutiger Linotype,Dejavu Sans,Helvetica Neue,Arial,sans-serif;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.form_login{
+    width: 30%;
+}
+
+.lembrar-senha {
+    margin-left: -120px;
+}
+
+ul.ui-autocomplete {
+    z-index: 1100;
+    position: absolute;
+    cursor: default;
+    background: white;
+    border: solid;
+    border-color: #69c964;
+}
+
+* html .ui-autocomplete {
+    width: 1px;
+}
+
+.table-formatada-pedido{
+    border: 1px solid #D8D6D6 !important;
+}
+
+.table-formatada-pedido thead{
+    background: #69c964;
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: inherit;
+    transition: all .5s;
+}
+
+/*Bootstrap button outline override*/
+.btn-primary.btn-outline {
+    color: #428bca;
+}
+
+.btn-success.btn-outline {
+    color: #5cb85c;
+}
+
+.btn-info.btn-outline {
+    color: #5bc0de;
+}
+
+.btn-warning.btn-outline {
+    color: #f0ad4e;
+}
+
+.btn-danger.btn-outline {
+    color: #d9534f;
+}
+
+.btn-primary.btn-outline:hover,
+.btn-success.btn-outline:hover,
+.btn-info.btn-outline:hover,
+.btn-warning.btn-outline:hover,
+.btn-danger.btn-outline:hover {
+    color: #fff;
+}

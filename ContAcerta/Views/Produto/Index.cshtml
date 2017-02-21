@@ -1,0 +1,61 @@
+﻿@model IEnumerable<ContAcerta.Models.Produto>
+
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<h2>Produtos</h2>
+<br />
+<p>
+    @Html.ActionLink("Criar Novo", "Create", null, new { @class = "btn btn-primary btn-lg" })
+</p>
+<br />
+<table id="pedidosTable" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DcProduto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TpProduto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValProduto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DtInclusao)
+            </th>
+            <th></th>
+        </tr>
+    </thead>    
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DcProduto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TpProduto)
+                </td>
+                <td>
+                    R$@Html.DisplayFor(modelItem => item.ValProduto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DtInclusao)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.ProdutoId }, new { @class = "btn btn-success" })
+                    @Html.ActionLink("Detalhes", "Details", new { id = item.ProdutoId }, new { @class = "btn btn-info" })
+                    @Html.ActionLink("Deletar", "Delete", new { id = item.ProdutoId }, new { @class = "btn btn-warning" })
+                </td>
+            </tr>
+
+
+        }
+    </tbody>
+</table>
+@section Scripts {
+    @Scripts.Render("~/bundles/pedidos-datatable")
+}
